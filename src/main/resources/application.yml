@@ -1,0 +1,20 @@
+spring:
+  security:
+    user:
+      name: alpha
+      password: 123456
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: eureka1
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://alpha:123456@eureka2:8762/eureka/,http://alpha:123456@eureka3:8763/eureka/
+
+
+
