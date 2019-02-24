@@ -1,20 +1,32 @@
-#spring:
-#  profiles:
-#    active: server1
-
+# 单机版
 server:
-  port: 8761
+  port: 9000
 
 spring:
+  application:
+    name: eureka
   security:
     user:
-      name: dev
+      name: eureka
       password: 123456
 
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
+    service-url:
+      defaultZone: http://eureka:123456@${spring.cloud.client.ip-address}:${server.port}/eureka/
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,env
 
+info:
+  author:
+    name: Joker Jing
+    WeChat: xiezi15071417019
+  app:
+    name: ${spring.application.name}
 
